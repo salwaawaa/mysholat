@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "445735452023",
+    "project_id": "mysholat",
+    "storage_bucket": "mysholat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445735452023:android:18b841130658e5a5637572",
+        "android_client_info": {
+          "package_name": "com.salwa.mysholat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445735452023-nik8agl7un24aaki00s22se7hc0lql2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEN326Q1jHsHRdkLQhvK2rZlDmk_z7_FY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445735452023-nik8agl7un24aaki00s22se7hc0lql2c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

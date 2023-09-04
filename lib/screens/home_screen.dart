@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
-// This controller will store the value of the search bar
+  // This controller will store the value of the search bar
   final TextEditingController _searchController = TextEditingController();
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var inputDecoration = InputDecoration(
@@ -13,7 +18,7 @@ class HomeScreen extends StatelessWidget {
       // Add a clear button to the search bar
       suffixIcon: IconButton(
         icon: const Icon(Icons.clear),
-        onPressed: () => _searchController.clear(),
+        onPressed: () => widget._searchController.clear(),
       ),
       // Add a search icon or button to the search bar
       prefixIcon: IconButton(
@@ -53,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "15:30",
+                            "15:05",
                             style: TextStyle(
                               fontSize: 40,
                               fontWeight: FontWeight.bold,
@@ -69,15 +74,16 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Container(
-                        width: 160,
-                        height: 150,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/images01.png"),
-                            fit: BoxFit.fill,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Image.asset(
+                            "assets/image/image1.png",
+                            width: 150, // Lebar gambar
+                            height: 150, // Tinggi gambar
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
@@ -89,17 +95,20 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   // Use a Material design search bar
                   child: TextField(
-                    controller: _searchController,
+                    controller: widget._searchController,
                     decoration: inputDecoration,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
-                Container(
-                  child: Column(
-                    children: [
-                      Padding(
+                Column(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/niatScreen');
+                      },
+                      child: Padding(
                         padding: const EdgeInsets.all(.300),
                         child: Container(
                           width: 336,
@@ -115,14 +124,33 @@ class HomeScreen extends StatelessWidget {
                                   2.0, // You can change the width of the border here
                             ),
                           ),
-                          child: Text("Niat niat sholat",
-                              style: TextStyle(fontSize: 25)),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/image/image2.png",
+                                width: 100, // Lebar gambar
+                                height: 100, // Tinggi gambar
+                              ),
+                              const Text(
+                                "Niat niat sholat",
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Padding(
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/bacaanScreen');
+                      },
+                      child: Padding(
                         padding: const EdgeInsets.all(.300),
                         child: Container(
                           width: 336,
@@ -138,14 +166,34 @@ class HomeScreen extends StatelessWidget {
                                   2.0, // You can change the width of the border here
                             ),
                           ),
-                          child: Text("Bacaan-Bacaan Sholat ",
-                              style: TextStyle(fontSize: 25)),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                "assets/image/image3.png",
+                                width: 100, // Lebar gambar
+                                height: 100, // Tinggi gambar
+                              ),
+                              const Text(
+                                "Bacaan Sholat ",
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Padding(
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/dzikirScreen');
+                      },
+                      child: Padding(
                         padding: const EdgeInsets.all(.300),
                         child: Container(
                           width: 336,
@@ -161,11 +209,26 @@ class HomeScreen extends StatelessWidget {
                                   2.0, // You can change the width of the border here
                             ),
                           ),
-                          child: Text("Dzikir", style: TextStyle(fontSize: 25)),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/image/image2.png",
+                                width: 100, // Lebar gambar
+                                height: 100, // Tinggi gambar
+                              ),
+                              const Text(
+                                "Dzikir",
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),
