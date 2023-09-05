@@ -1,16 +1,13 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 
-class notesscreen extends StatefulWidget {
+class notesscreen extends StatelessWidget {
   const notesscreen({super.key});
 
   @override
-  State<notesscreen> createState() => _notesscreenState();
-}
-
-class _notesscreenState extends State<notesscreen> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold();
-    
+    return const Scaffold();
+     
   }
 }

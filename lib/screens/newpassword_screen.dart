@@ -26,7 +26,7 @@ class _NewpasswordState extends State<Newpassword> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -40,8 +40,8 @@ class _NewpasswordState extends State<Newpassword> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16.0),
                   child: Text(
                     "Tetapkan kata sandi baru!",
                     style: TextStyle(
@@ -55,12 +55,12 @@ class _NewpasswordState extends State<Newpassword> {
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "kata sandi baru ",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFFF),
+                          color: Color(0x00ffffff),
                         ),
                       ),
                       TextFormField(
@@ -73,13 +73,13 @@ class _NewpasswordState extends State<Newpassword> {
                           hintText: 'Masukkan kata sandi Anda',
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         "konfirmasi kata sandi",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFFF),
+                          color: Color(0x00ffffff),
                         ),
                       ),
                       TextFormField(
@@ -105,11 +105,11 @@ class _NewpasswordState extends State<Newpassword> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: 20,
                           ),
                           alignment: Alignment.center,
-                          child: Text("Atur ulang kata sandi",
+                          child: const Text("Atur ulang kata sandi",
                               style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,

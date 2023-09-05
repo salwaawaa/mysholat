@@ -15,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -29,8 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16.0),
                   child: Text(
                     "Masuk untuk melanjutkan!",
                     style: TextStyle(
@@ -44,12 +44,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Username",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFFF),
+                          color: Color(0x00ffffff),
                         ),
                       ),
                       TextFormField(
@@ -62,13 +62,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           hintText: 'Masukkan username...',
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         "Password",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFFF),
+                          color: Color(0x00ffffff),
                         ),
                       ),
                       TextFormField(
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.pushNamed(context, '/forgotScreen');
                             // Implement your password recovery logic here
                           },
-                           child: Text(
+                           child: const Text(
                             "Lupa password?",
                             style: TextStyle(
                               fontSize: 15,
@@ -111,9 +111,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             "Masuk",
                             style: TextStyle(
                               fontSize: 18,
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 25), // Adjust spacing
+                      const SizedBox(height: 25), // Adjust spacing
                       Row(
                         mainAxisAlignment:
                             MainAxisAlignment.center, // Adjust alignment
@@ -136,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(width: 25), // Adjust spacing
+                          const SizedBox(width: 25), // Adjust spacing
                           Container(
                             width: 84,
                             height: 67,
@@ -145,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(width: 25), // Adjust spacing
+                          const SizedBox(width: 25), // Adjust spacing
                           Container(
                             width: 84,
                             height: 67,

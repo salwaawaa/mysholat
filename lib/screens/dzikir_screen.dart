@@ -4,6 +4,7 @@ class DzikirScreen extends StatefulWidget {
   const DzikirScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _DzikirScreenState createState() => _DzikirScreenState();
 }
 
@@ -36,7 +37,7 @@ class _DzikirScreenState extends State<DzikirScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -51,7 +52,7 @@ class _DzikirScreenState extends State<DzikirScreen> {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 25),
+                    margin: const EdgeInsets.only(left: 25),
                     child: Image.asset(
                       "assets/image/image2.png",
                       width: 150,
@@ -67,18 +68,18 @@ class _DzikirScreenState extends State<DzikirScreen> {
                 Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.all(25.0),
+                      margin: const EdgeInsets.all(25.0),
                       width: 162,
                       height: 140,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 236, 237, 236),
+                        color: const Color.fromARGB(255, 236, 237, 236),
                         borderRadius: BorderRadius.circular(8.0),
                         border: Border.all(
                           color: Colors.black,
                           width: 1.0,
                         ),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -110,14 +111,14 @@ class _DzikirScreenState extends State<DzikirScreen> {
                       width: 162,
                       height: 140,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 236, 237, 236),
+                        color: const Color.fromARGB(255, 236, 237, 236),
                         borderRadius: BorderRadius.circular(8.0),
                         border: Border.all(
                           color: Colors.black,
                           width: 1.0,
                         ),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -150,18 +151,18 @@ class _DzikirScreenState extends State<DzikirScreen> {
                 Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.all(25.0),
+                      margin: const EdgeInsets.all(25.0),
                       width: 162,
                       height: 140,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 236, 237, 236),
+                        color: const Color.fromARGB(255, 236, 237, 236),
                         borderRadius: BorderRadius.circular(8.0),
                         border: Border.all(
                           color: Colors.black,
                           width: 1.0,
                         ),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -193,14 +194,14 @@ class _DzikirScreenState extends State<DzikirScreen> {
                       width: 162,
                       height: 140,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 236, 237, 236),
+                        color: const Color.fromARGB(255, 236, 237, 236),
                         borderRadius: BorderRadius.circular(8.0),
                         border: Border.all(
                           color: Colors.black,
                           width: 1.0,
                         ),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -236,14 +237,14 @@ class _DzikirScreenState extends State<DzikirScreen> {
                       width: 341,
                       height: 99,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 236, 237, 236),
+                        color: const Color.fromARGB(255, 236, 237, 236),
                         borderRadius: BorderRadius.circular(8.0),
                         border: Border.all(
                           color: Colors.black,
                           width: 1.0,
                         ),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [

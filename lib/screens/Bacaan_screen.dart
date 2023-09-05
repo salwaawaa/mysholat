@@ -1,10 +1,14 @@
 
 
+
+
+// ignore_for_file: library_private_types_in_public_api, file_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class BacaanScreen extends StatefulWidget {
-  BacaanScreen({Key? key}) : super(key: key);
+  const BacaanScreen({Key? key}) : super(key: key);
 
   @override
   _BacaanScreenState createState() => _BacaanScreenState();
@@ -55,7 +59,7 @@ class _BacaanScreenState extends State<BacaanScreen> {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 20),
+                    margin: const EdgeInsets.only(left: 20),
                     child: Image.asset(
                       "assets/image/image3.png",
                       width: 155,
@@ -72,7 +76,7 @@ class _BacaanScreenState extends State<BacaanScreen> {
                     .snapshots(),
                 builder: (_, snapshot) {
                   if (!snapshot.hasData) {
-                    return CircularProgressIndicator();
+                    return const CircularProgressIndicator();
                   }
                   List<QueryDocumentSnapshot<Map<String, dynamic>>> data =
                       snapshot.data!.docs;
@@ -84,7 +88,7 @@ class _BacaanScreenState extends State<BacaanScreen> {
                         itemCount: data.length,
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
-                        separatorBuilder: (context, index) => SizedBox(
+                        separatorBuilder: (context, index) => const SizedBox(
                               width: 24,
                             ),
                         itemBuilder: (_, i) {
@@ -97,12 +101,12 @@ class _BacaanScreenState extends State<BacaanScreen> {
                                 Row(
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.all(10),
+                                      margin: const EdgeInsets.all(10),
                                       width: 40, // Adjust this as needed
                                       height: 40, // Adjust this as needed
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Color(0xFF3F2C67),
+                                        color: const Color(0xFF3F2C67),
                                         border: Border.all(
                                             color: Colors.deepPurple,
                                             width: 0.8),
@@ -110,7 +114,7 @@ class _BacaanScreenState extends State<BacaanScreen> {
                                       child: Center(
                                         child: Text(
                                           "${i + 1}",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,
@@ -123,22 +127,22 @@ class _BacaanScreenState extends State<BacaanScreen> {
                                       child: FittedBox(
                                         child: Text(
                                           data[i]["title"],
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 30,
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 50,
                                     )
                                   ],
                                 ),
                                 Container(
                                   height: 400,
-                                  padding: EdgeInsets.all(5),
-                                  margin: EdgeInsets.only(left: 20, top: 20),
+                                  padding: const EdgeInsets.all(5),
+                                  margin: const EdgeInsets.only(left: 20, top: 20),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
@@ -147,30 +151,30 @@ class _BacaanScreenState extends State<BacaanScreen> {
                                           width: 180,
                                           height: 180,
                                         ),
-                                        SizedBox(height: 10),
+                                        const SizedBox(height: 10),
                                         Text(
                                           data[i]["textArab"],
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.black,
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.all(5),
+                                          padding: const EdgeInsets.all(5),
                                           child: Text(
                                             data[i]["latin"],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.normal,
                                               color: Colors.black,
                                             ),
                                           ),
                                         ),
-                                        SizedBox(height: 10),
+                                        const SizedBox(height: 10),
                                         Text(
                                           data[i]["translate"],
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.normal,
                                             color: Colors.black,

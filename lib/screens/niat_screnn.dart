@@ -38,10 +38,10 @@ class _NiatScreenState extends State<NiatScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Text(
                         "Niat sholat",
                         style: TextStyle(
@@ -64,74 +64,77 @@ class _NiatScreenState extends State<NiatScreen> {
               ),
             ),
             StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection("niatSholat")
-                    .snapshots(),
-                builder: (_, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const CircularProgressIndicator();
-                  }
-                  List<QueryDocumentSnapshot<Map<String, dynamic>>> data =
-                      snapshot.data!.docs;
-                  return Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Card(
-                      child: SizedBox(
-                        width: 400,
-                        height: 150,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              height: 450,
-                              child: ListView.separated(
-                                itemCount: data.length,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                separatorBuilder: (context, index) =>
-                                    const SizedBox(
-                                  height: 24,
-                                ),
-                                itemBuilder: (_, i) {
-                                  return Container(
-                                    width: 312,
-                                    height: 685,
-                                    color: Colors.white,
-                                    child: Column(children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            data[i]["title"],
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          Text(
-                                            data[i]["textArab"],
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                          Text(
-                                            data[i]["latin"],
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ]),
-                                  );
-                                },
-                              ),
-                            )
-                          ],
+              stream: FirebaseFirestore.instance
+                  .collection("niatSholat")
+                  .orderBy("index", descending: false)
+                  .snapshots(),
+              builder: (_, snapshot) {
+                if (!snapshot.hasData) {
+                  return const CircularProgressIndicator();
+                }
+                List<QueryDocumentSnapshot<Map<String, dynamic>>> data =
+                    snapshot.data!.docs;
+                return Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Card(
+                    child: SizedBox(
+                      width: 400,
+                      height: 450, // Sesuaikan tinggi dengan kontennya
+                      child: ListView.separated(
+                        itemCount: data.length,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        separatorBuilder: (context, index) => const SizedBox(
+                          height: 24,
                         ),
+                        itemBuilder: (_, i) {
+                          return Container(
+                            color: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: const Color(0xFF3F2C67),
+                                      border: Border.all(
+                                        color: Colors.deepPurple,
+                                        width: 0.8,
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "${i + 1}",
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    data[i]["title"],
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
-                  );
-                }),
-            // Add more widgets here if needed
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

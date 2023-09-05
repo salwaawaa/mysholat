@@ -39,8 +39,8 @@ class _ResetScreenState extends State<ResetScreen> {
                   ),
                 ),
                 const SizedBox(height: 16.0), // Add spacing
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16.0),
                   child: Text(
                     "Atur ulang kata sandi",
                     style: TextStyle(
@@ -107,11 +107,11 @@ class _ResetScreenState extends State<ResetScreen> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 20,
                     ),
                     alignment: Alignment.center,
-                    child: Text("Atur ulang kata sandi",
+                    child: const Text("Atur ulang kata sandi",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -131,11 +131,11 @@ class _ResetScreenState extends State<ResetScreen> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 20,
                     ),
                     alignment: Alignment.center,
-                    child: Text("Kembali untuk Masuk",
+                    child: const Text("Kembali untuk Masuk",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -143,8 +143,8 @@ class _ResetScreenState extends State<ResetScreen> {
                         )),
                   ),
                 ),
-                SizedBox(height: 10), // Add spacing between texts
-                Text(
+                const SizedBox(height: 10), // Add spacing between texts
+                const Text(
                   "Tidak menerima email? Klik untuk mengirim ulang",
                   style: TextStyle(
                     fontSize: 15,

@@ -15,7 +15,7 @@ class _LoginAdminState extends State<LoginAdmin> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -29,8 +29,8 @@ class _LoginAdminState extends State<LoginAdmin> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16.0),
                   child: Text(
                     "LOGIN!",
                     style: TextStyle(
@@ -44,12 +44,12 @@ class _LoginAdminState extends State<LoginAdmin> {
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Username",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFFF),
+                          color: Color(0x00ffffff),
                         ),
                       ),
                       TextFormField(
@@ -62,13 +62,13 @@ class _LoginAdminState extends State<LoginAdmin> {
                           hintText: 'Enter your username ',
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         "Password",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFFF),
+                          color: Color(0x00ffffff),
                         ),
                       ),
                       TextFormField(
@@ -94,9 +94,9 @@ class _LoginAdminState extends State<LoginAdmin> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             "Masuk",
                             style: TextStyle(
                               fontSize: 18,

@@ -52,7 +52,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(17.0),
+            padding: const EdgeInsets.all(17.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -64,8 +64,8 @@ class _ForgotScreenState extends State<ForgotScreen> {
                     height: 250,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16.0),
                   child: Text(
                     "lupa kata sandi",
                     style: TextStyle(
@@ -75,14 +75,14 @@ class _ForgotScreenState extends State<ForgotScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ), // Add spacing between text and input field
                 TextFormField(
                   controller: _searchController,
                   decoration: inputDecoration,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 InkWell(
@@ -96,11 +96,11 @@ class _ForgotScreenState extends State<ForgotScreen> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 20,
                     ),
                     alignment: Alignment.center,
-                    child: Text("Atur ulang kata sandi",
+                    child: const Text("Atur ulang kata sandi",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -108,7 +108,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
                         )),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 InkWell(
@@ -122,11 +122,11 @@ class _ForgotScreenState extends State<ForgotScreen> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 20,
                     ),
                     alignment: Alignment.center,
-                    child: Text("Kembali untuk masuk ",
+                    child: const Text("Kembali untuk masuk ",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -134,10 +134,10 @@ class _ForgotScreenState extends State<ForgotScreen> {
                         )),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 7,
                 ), // Add spacing before the "Belum punya akun? Daftar" text
-                Text(
+                const Text(
                   "Belum punya akun? Daftar",
                   style: TextStyle(
                     fontSize: 18,

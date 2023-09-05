@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
         floatingActionButton: Padding(
           padding: const EdgeInsets.only(left: 50, bottom: 45),
-          child: Container(
+          child: SizedBox(
               height: 75,
               width: 155,
               child: InkWell(
@@ -41,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                     ),
-                    child: Center(
+                    child: const Center(
                         child: Text(
                       "Next",
                       style: TextStyle(fontSize: 20),

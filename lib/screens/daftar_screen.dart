@@ -15,7 +15,7 @@ class _DaftarScreenState extends State<DaftarScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -29,8 +29,8 @@ class _DaftarScreenState extends State<DaftarScreen> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16.0),
                   child: Text(
                     "Daftar untuk melanjutkan",
                     style: TextStyle(
@@ -44,16 +44,16 @@ class _DaftarScreenState extends State<DaftarScreen> {
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Username",
                         style: TextStyle(
                           fontSize: 20, // Adjusted font size
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFFF),
+                          color: Color(0x00ffffff),
                         ),
                       ),
-                      SizedBox(height: 6),
-                      Container(
+                      const SizedBox(height: 6),
+                      SizedBox(
                         height: 60,
                         width: 325,
                         child: TextFormField(
@@ -67,17 +67,17 @@ class _DaftarScreenState extends State<DaftarScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 6),
-                      Text(
+                      const SizedBox(height: 6),
+                      const Text(
                         "Password",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFFF),
+                          color: Color(0x00ffffff),
                         ),
                       ),
-                      SizedBox(height: 6),
-                      Container(
+                      const SizedBox(height: 6),
+                      SizedBox(
                         height: 60,
                         width: 325,
                         child: TextFormField(
@@ -91,7 +91,7 @@ class _DaftarScreenState extends State<DaftarScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       InkWell(
                         onTap: () {
                           // Implement your login logic here
@@ -102,9 +102,9 @@ class _DaftarScreenState extends State<DaftarScreen> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             "Daftar",
                             style: TextStyle(
                               fontSize: 18,
@@ -126,8 +126,4 @@ class _DaftarScreenState extends State<DaftarScreen> {
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: DaftarScreen(),
-  ));
-}
+
