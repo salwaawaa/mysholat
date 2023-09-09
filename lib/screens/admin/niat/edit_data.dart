@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TambahData extends StatefulWidget {
-  const TambahData({super.key});
+class EditData extends StatefulWidget {
+  const EditData({super.key});
 
   @override
-  State<TambahData> createState() => _TambahDataState();
+  State<EditData> createState() => _EditDataState();
 }
 
-class _TambahDataState extends State<TambahData> {
+class _EditDataState extends State<EditData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,16 +16,15 @@ class _TambahDataState extends State<TambahData> {
         toolbarHeight: 70,
         backgroundColor: const Color(0xFF3E2B67),
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Tambah Data",
+              "Edit Data",
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
-            const SizedBox(
-                width: 85), // Add space between text and checkmark icon
             IconButton(
               icon: const Icon(Icons.check),
               onPressed: () {
@@ -98,7 +97,8 @@ class _TambahDataState extends State<TambahData> {
                   TextField(
                     decoration: InputDecoration(
                       hintText: "Masukkan Judul",
-                      hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
+                      hintStyle:
+                          const TextStyle(fontSize: 16, color: Colors.grey),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Color.fromARGB(255, 178, 115, 189),
@@ -134,7 +134,8 @@ class _TambahDataState extends State<TambahData> {
                   TextField(
                     decoration: InputDecoration(
                       hintText: "Isi Foto",
-                      hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
+                      hintStyle:
+                          const TextStyle(fontSize: 16, color: Colors.grey),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Color.fromARGB(255, 178, 115, 189),
@@ -171,8 +172,8 @@ class _TambahDataState extends State<TambahData> {
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                             hintText: "Isi Deskripsi",
-                            hintStyle:
-                                const TextStyle(fontSize: 16, color: Colors.grey),
+                            hintStyle: const TextStyle(
+                                fontSize: 16, color: Colors.grey),
                             border: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.black),
                               borderRadius: BorderRadius.circular(10),

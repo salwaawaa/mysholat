@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class EditData extends StatefulWidget {
-  const EditData({super.key});
+class TambahData extends StatefulWidget {
+  const TambahData({super.key});
 
   @override
-  State<EditData> createState() => _EditDataState();
+  State<TambahData> createState() => _TambahDataState();
 }
 
-class _EditDataState extends State<EditData> {
+class _TambahDataState extends State<TambahData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,25 +16,14 @@ class _EditDataState extends State<EditData> {
         toolbarHeight: 70,
         backgroundColor: const Color(0xFF3E2B67),
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Notesscreen');
-              },
-              iconSize: 30,
-            ),
-            const SizedBox(
-                width: 85), // Add space between arrow back icon and text
             const Text(
-              "edit Data",
+              "Tambah Data",
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
-            const SizedBox(
-                width: 85), // Add space between text and checkmark icon
             IconButton(
               icon: const Icon(Icons.check),
               onPressed: () {
@@ -107,7 +96,8 @@ class _EditDataState extends State<EditData> {
                   TextField(
                     decoration: InputDecoration(
                       hintText: "Masukkan Judul",
-                      hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
+                      hintStyle:
+                          const TextStyle(fontSize: 16, color: Colors.grey),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Color.fromARGB(255, 178, 115, 189),
@@ -143,7 +133,8 @@ class _EditDataState extends State<EditData> {
                   TextField(
                     decoration: InputDecoration(
                       hintText: "Isi Foto",
-                      hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
+                      hintStyle:
+                          const TextStyle(fontSize: 16, color: Colors.grey),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Color.fromARGB(255, 178, 115, 189),
@@ -180,8 +171,8 @@ class _EditDataState extends State<EditData> {
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                             hintText: "Isi Deskripsi",
-                            hintStyle:
-                                const TextStyle(fontSize: 16, color: Colors.grey),
+                            hintStyle: const TextStyle(
+                                fontSize: 16, color: Colors.grey),
                             border: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.black),
                               borderRadius: BorderRadius.circular(10),
