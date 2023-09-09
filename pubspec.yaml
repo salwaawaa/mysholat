@@ -66,12 +66,12 @@ flutter:
 
 
  
-  font:
+  fonts:
     - family: Poppins
       fonts:
-        - asset: font/Poppins-Regular.ttf
-        - asset: font/Poppins-Bold.ttf
-        - asset: font/Poppins-BoldItalic.ttf
+        - asset: assets/font/Poppins-Regular.ttf
+        - asset: assets/font/Poppins-Bold.ttf
+        - asset: assets/font/Poppins-BoldItalic.ttf
 
 
 

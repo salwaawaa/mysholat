@@ -1,19 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mysholat/screens/editdata.dart';
-import 'package:mysholat/screens/login_admin.dart';
+import 'package:mysholat/screens/admin/edit_data.dart';
+import 'package:mysholat/screens/admin/login_admin.dart';
 import 'package:mysholat/screens/daftar_screen.dart';
-import 'package:mysholat/screens/forgot_screen.dart';
-import 'package:mysholat/screens/login_screen.dart';
-import 'package:mysholat/screens/newpassword_screen.dart';
-import 'package:mysholat/screens/notes_screen.dart';
-import 'package:mysholat/screens/reset_screen.dart';
-import 'package:mysholat/screens/tambahdata.dart';
+import 'package:mysholat/screens/login/forgot_screen.dart';
+import 'package:mysholat/screens/login/login_screen.dart';
+import 'package:mysholat/screens/login/newpassword_screen.dart';
+import 'package:mysholat/screens/admin/notes_screen.dart';
+import 'package:mysholat/screens/login/reset_screen.dart';
+import 'package:mysholat/screens/admin/tambah_data.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:mysholat/screens/Bacaan_screen.dart';
+import 'package:mysholat/screens/bacaan_screen.dart';
 import 'package:mysholat/screens/dzikir_screen.dart';
 import 'package:mysholat/screens/home_screen.dart';
-import 'package:mysholat/screens/niat_screnn.dart';
+import 'package:mysholat/screens/niat_screen.dart';
 import 'package:mysholat/screens/splash_screen.dart';
 
 void main() async {
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MySholat',
       theme: ThemeData(fontFamily: 'Poppins'),
-      initialRoute: '/loginScreen',
+      initialRoute: '/homeScreen',
       routes: {
         '/splashScreen': (context) => const SplashScreen(),
         '/homeScreen': (context) => HomeScreen(),
