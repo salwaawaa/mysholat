@@ -16,11 +16,17 @@ class _DzikirScreenState extends State<DzikirScreen> {
       backgroundColor: const Color(0xFF3E2B67),
       appBar: AppBar(
         backgroundColor: const Color(0xFF3E2B67),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(
+                context,
+              );
+            },
+            iconSize: 45,
+          ),
         ),
       ),
       body: Column(
@@ -33,19 +39,25 @@ class _DzikirScreenState extends State<DzikirScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  "Dzikir",
-                  style: TextStyle(
-                    fontSize: 45,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                const Padding(
+                  padding: EdgeInsets.all(35),
+                  child: Text(
+                    "Dzikir",
+                    style: TextStyle(
+                      fontSize: 45,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-                SizedBox(
-                  width: 150,
-                  child: Image.asset(
-                    "assets/image/image2.png",
-                    scale: 1,
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: SizedBox(
+                    width: 150,
+                    child: Image.asset(
+                      "assets/image/image2.png",
+                      scale: 1,
+                    ),
                   ),
                 ),
               ],
@@ -70,162 +82,173 @@ class _DzikirScreenState extends State<DzikirScreen> {
                 children: [
                   Row(
                     children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        height: 140,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Tasbih",
-                              style: TextStyle(
-                                fontSize: 20,
+                      Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Container(
+                          width: 180,
+                          height: 140,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Tasbih",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
                               ),
-                            ),
-                            Text(
-                              "بْحَانَ الله",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                              Text(
+                                "بْحَانَ الله",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            Text(
-                              "Maha Suci Allah",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                              Text(
+                                "Maha Suci Allah",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        height: 140,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 236, 237, 236),
-                          borderRadius: BorderRadius.circular(8.0),
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 1.0,
+                            ],
                           ),
                         ),
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Tahmid",
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          width: 180,
+                          height: 140,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 236, 237, 236),
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 1.0,
                             ),
-                            Text(
-                              "الْحَمْدُ للهِ",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Tahmid",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
                               ),
-                            ),
-                            Text(
-                              "Segala Puji Bagi Allah",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                              Text(
+                                "الْحَمْدُ للهِ",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
+                              Text(
+                                "Segala Puji Bagi Allah",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.all(25.0),
-                        width: 162,
-                        height: 140,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 236, 237, 236),
-                          borderRadius: BorderRadius.circular(8.0),
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 1.0,
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 180,
+                          height: 140,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 236, 237, 236),
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Takbir",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                "اللَّهُ أَكْبَرُ",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Text(
+                                "Allah Maha Besar",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Takbir",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
+                        Padding(
+                          padding: const EdgeInsets.all(1),
+                          child: Container(
+                            width: 180,
+                            height: 140,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 236, 237, 236),
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 1.0,
                               ),
                             ),
-                            Text(
-                              "اللَّهُ أَكْبَرُ",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                              ),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Tahlil",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Text(
+                                  "لَا إِلَهَ إِلَّا اللَّهُ",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                Text(
+                                  "Tiada tuhan selain \nAllah",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              "Allah Maha Besar",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 162,
-                        height: 140,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 236, 237, 236),
-                          borderRadius: BorderRadius.circular(8.0),
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 1.0,
                           ),
                         ),
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Tahlil",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Text(
-                              "لَا إِلَهَ إِلَّا اللَّهُ",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              "Tiada tuhan selain \nAllah",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Container(
                     width: 341,
