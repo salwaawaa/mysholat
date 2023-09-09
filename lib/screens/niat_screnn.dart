@@ -5,6 +5,7 @@ class NiatScreen extends StatefulWidget {
   const NiatScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _NiatScreenState createState() {
     return _NiatScreenState();
   }
@@ -124,7 +125,7 @@ class _NiatScreenState extends State<NiatScreen> {
               Text(
                 data["title"].toString(),
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -133,14 +134,14 @@ class _NiatScreenState extends State<NiatScreen> {
           Text(
             data["textArab"].toString(),
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            data["translate"].toString(),
+            data["latin"].toString(),
             style: const TextStyle(
-                fontSize: 14,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic),
           ),

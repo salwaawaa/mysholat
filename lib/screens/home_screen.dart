@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    var inputDecoration = InputDecoration(
+    InputDecoration inputDecoration = InputDecoration(
       filled: true,
       fillColor: Colors.white,
       hintText: 'Search...',

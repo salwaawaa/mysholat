@@ -175,7 +175,7 @@ class _BacaanScreenState extends State<BacaanScreen> {
                                         Text(
                                           data[i]["translate"],
                                           style: const TextStyle(
-                                            fontSize: 20,
+                                            fontSize: 2,
                                             fontWeight: FontWeight.normal,
                                             color: Colors.black,
                                           ),

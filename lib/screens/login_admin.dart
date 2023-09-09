@@ -85,7 +85,7 @@ class _LoginAdminState extends State<LoginAdmin> {
                       const SizedBox(height: 12), // Add spacing
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, '/homeScreen');
+                          Navigator.pushNamed(context, '/Notesscreen');
                           // Implement your login logic here
                         },
                         child: Container(

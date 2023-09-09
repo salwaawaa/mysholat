@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:mysholat/screens/editdata.dart';
 import 'package:mysholat/screens/login_admin.dart';
 import 'package:mysholat/screens/daftar_screen.dart';
 import 'package:mysholat/screens/forgot_screen.dart';
 import 'package:mysholat/screens/login_screen.dart';
 import 'package:mysholat/screens/newpassword_screen.dart';
+import 'package:mysholat/screens/notes_screen.dart';
 import 'package:mysholat/screens/reset_screen.dart';
 import 'package:mysholat/screens/tambahdata.dart';
 import 'firebase_options.dart';
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MySholat',
       theme: ThemeData(fontFamily: 'Poppins'),
-      initialRoute: '/splashScreen',
+      initialRoute: '/loginScreen',
       routes: {
         '/splashScreen': (context) => const SplashScreen(),
         '/homeScreen': (context) => HomeScreen(),
@@ -46,6 +48,8 @@ class MyApp extends StatelessWidget {
         '/newpassword': (context) => const Newpassword(),
         '/loginadmin': (context) => const LoginAdmin(),
         '/tambahdata': (context) => const TambahData(),
+        '/editdata': (context) => const EditData(),
+        '/Notesscreen': (context) => const notesscreen(),
       },
     );
   }
