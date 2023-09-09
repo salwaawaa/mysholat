@@ -115,7 +115,7 @@ class _notesscreenState extends State<notesscreen> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, '/bacaanScreen');
+                    Navigator.pushNamed(context, '/bacaanAdmin');
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,

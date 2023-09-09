@@ -1,16 +1,14 @@
-// ignore_for_file: library_private_types_in_public_api, file_names
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class BacaanScreen extends StatefulWidget {
-  const BacaanScreen({Key? key}) : super(key: key);
+class BacaanAdmin extends StatefulWidget {
+  const BacaanAdmin({super.key});
 
   @override
-  _BacaanScreenState createState() => _BacaanScreenState();
+  State<BacaanAdmin> createState() => _BacaanAdminState();
 }
 
-class _BacaanScreenState extends State<BacaanScreen> {
+class _BacaanAdminState extends State<BacaanAdmin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,8 +55,42 @@ class _BacaanScreenState extends State<BacaanScreen> {
               ),
             ),
             const SizedBox(
-              height: 3,
+              height: 15,
             ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/tambahdata');
+                },
+                child: Container(
+                  width: 140,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xFF984EF8),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Tambah Data",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white, // Set the text color
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(
+              height: 35,
+            ),
+            Column(
+              children: [Container()],
+            ),
+
             StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection("bacaanSholat")

@@ -4,6 +4,7 @@ import 'package:mysholat/screens/admin/login_admin.dart';
 import 'package:mysholat/screens/admin/niat/edit_niat.dart';
 import 'package:mysholat/screens/admin/niat/niat_admin.dart';
 import 'package:mysholat/screens/admin/niat/tambah_niat.dart';
+import 'package:mysholat/screens/admin/bacaan/bacaan_admin.dart';
 import 'package:mysholat/screens/daftar_screen.dart';
 import 'package:mysholat/screens/login/forgot_screen.dart';
 import 'package:mysholat/screens/login/login_screen.dart';
@@ -55,7 +56,11 @@ class MyApp extends StatelessWidget {
         '/Notesscreen': (context) => const notesscreen(),
         '/niatAdmin': (context) => const NiatAdmin(),
         '/tambahNiat': (context) => const TambahNiat(),
+         '/bacaanAdmin': (context) => const BacaanAdmin(),
       },
     );
   }
+}
+
+mixin Updated {
 }
