@@ -17,7 +17,6 @@ class _NiatScreenState extends State<NiatScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFF3E2B67),
       appBar: AppBar(
-        shadowColor: Colors.transparent,
         backgroundColor: const Color(0xFF3E2B67),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

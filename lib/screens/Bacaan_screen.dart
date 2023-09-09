@@ -1,9 +1,3 @@
-
-
-
-
-// ignore_for_file: library_private_types_in_public_api, file_names
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -20,178 +14,174 @@ class _BacaanScreenState extends State<BacaanScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFF3E2B67),
       appBar: AppBar(
-        shadowColor: Colors.transparent,
         backgroundColor: const Color(0xFF3E2B67),
         leading: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pushNamed(context, '/homeScreen');
+              Navigator.pop(context);
             },
-            iconSize: 45,
           ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 160,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Bacaan sholat",
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
+                  const Text(
+                    "Bacaan\nShalat",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 20),
+                  SizedBox(
+                    width: 180,
                     child: Image.asset(
                       "assets/image/image3.png",
-                      width: 155,
-                      height: 155,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ],
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection("bacaanSholat")
-                    .orderBy("index", descending: false)
-                    .snapshots(),
-                builder: (_, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const CircularProgressIndicator();
-                  }
-                  List<QueryDocumentSnapshot<Map<String, dynamic>>> data =
-                      snapshot.data!.docs;
+              stream: FirebaseFirestore.instance
+                  .collection("bacaanSholat")
+                  .orderBy("index", descending: false)
+                  .snapshots(),
+              builder: (_, snapshot) {
+                if (!snapshot.hasData) {
+                  return const CircularProgressIndicator();
+                }
+                List<QueryDocumentSnapshot<Map<String, dynamic>>> data =
+                    snapshot.data!.docs;
 
-                  return SizedBox(
-                    height: 500,
-                    width: 1000,
-                    child: ListView.separated(
-                        itemCount: data.length,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        separatorBuilder: (context, index) => const SizedBox(
-                              width: 24,
-                            ),
-                        itemBuilder: (_, i) {
-                          return Container(
-                            width: 312,
-                            height: 700,
-                            color: Colors.white,
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.all(10),
-                                      width: 40, // Adjust this as needed
-                                      height: 40, // Adjust this as needed
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: const Color(0xFF3F2C67),
-                                        border: Border.all(
-                                            color: Colors.deepPurple,
-                                            width: 0.8),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "${i + 1}",
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                          ),
-                                          // Provide meaningful content here
-                                        ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      child: FittedBox(
-                                        child: Text(
-                                          data[i]["title"],
-                                          style: const TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 50,
-                                    )
-                                  ],
-                                ),
-                                Container(
-                                  height: 400,
-                                  padding: const EdgeInsets.all(5),
-                                  margin: const EdgeInsets.only(left: 20, top: 20),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        Image.network(
-                                          data[i]["image"],
-                                          width: 180,
-                                          height: 180,
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Text(
-                                          data[i]["textArab"],
-                                          style: const TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(5),
-                                          child: Text(
-                                            data[i]["latin"],
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.normal,
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Text(
-                                          data[i]["translate"],
-                                          style: const TextStyle(
-                                            fontSize: 2,
-                                            fontWeight: FontWeight.normal,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
-                  );
-                }),
-            // Add more widgets here if needed
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(data.length, (index) {
+                      DocumentSnapshot<Map<String, dynamic>> docs = data[index];
+                      return _listBacaan(context, docs);
+                    }),
+                  ),
+                );
+              },
+            ),
           ],
+        ),
+      ),
+    );
+  }
+
+  _listBacaan(
+      BuildContext context, DocumentSnapshot<Map<String, dynamic>> docs) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxHeight: 450),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          width: 300,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(10),
+                    width: 30, // Adjust this as needed
+                    height: 30, // Adjust this as needed
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: const Color(0xFF3F2C67),
+                      border: Border.all(color: Colors.deepPurple, width: 0.8),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "${docs["index"]}",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        // Provide meaningful content here
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: FittedBox(
+                      child: Text(
+                        docs["title"],
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 450,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      Image.network(
+                        docs["image"],
+                        scale: 4,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        docs["textArab"],
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.right,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        docs["latin"],
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        docs["translate"],
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
