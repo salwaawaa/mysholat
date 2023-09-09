@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'edit_niat.dart';
+
 class NiatAdmin extends StatelessWidget {
   const NiatAdmin({super.key});
 
@@ -63,7 +65,7 @@ class NiatAdmin extends StatelessWidget {
                       alignment: Alignment.bottomRight,
                       child: InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, '/tambahdata');
+                          Navigator.pushNamed(context, '/tambahNiat');
                         },
                         child: Container(
                           width: 140,
@@ -168,15 +170,13 @@ class NiatAdmin extends StatelessWidget {
                     ),
                   ],
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Text(
-                    docs["textArab"].toString(),
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                Text(
+                  docs["textArab"].toString(),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
+                  textAlign: TextAlign.right,
                 ),
                 Text(
                   docs["latin"].toString(),
@@ -242,7 +242,12 @@ class NiatAdmin extends StatelessWidget {
                     color: Colors.blue,
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/editdata');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditNiat(document: docs),
+                      ),
+                    );
                   },
                 ),
               ],

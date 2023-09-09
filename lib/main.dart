@@ -1,14 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mysholat/screens/admin/niat/edit_data.dart';
+import 'package:mysholat/screens/admin/edit_data.dart';
 import 'package:mysholat/screens/admin/login_admin.dart';
+import 'package:mysholat/screens/admin/niat/edit_niat.dart';
 import 'package:mysholat/screens/admin/niat/niat_admin.dart';
+import 'package:mysholat/screens/admin/niat/tambah_niat.dart';
 import 'package:mysholat/screens/daftar_screen.dart';
 import 'package:mysholat/screens/login/forgot_screen.dart';
 import 'package:mysholat/screens/login/login_screen.dart';
 import 'package:mysholat/screens/login/newpassword_screen.dart';
 import 'package:mysholat/screens/admin/notes_screen.dart';
 import 'package:mysholat/screens/login/reset_screen.dart';
-import 'package:mysholat/screens/admin/niat/tambah_data.dart';
+import 'package:mysholat/screens/admin/tambah_data.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:mysholat/screens/bacaan_screen.dart';
@@ -52,6 +54,7 @@ class MyApp extends StatelessWidget {
         '/editdata': (context) => const EditData(),
         '/Notesscreen': (context) => const notesscreen(),
         '/niatAdmin': (context) => const NiatAdmin(),
+        '/tambahNiat': (context) => const TambahNiat(),
       },
     );
   }
