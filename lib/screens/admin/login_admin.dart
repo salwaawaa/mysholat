@@ -1,13 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginAdmin extends StatefulWidget {
-  const LoginAdmin({super.key});
+  const LoginAdmin({Key? key}) : super(key: key);
 
   @override
-  State<LoginAdmin> createState() => _LoginAdminState();
+  _LoginAdminState createState() => _LoginAdminState();
 }
 
 class _LoginAdminState extends State<LoginAdmin> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<void> _signInWithEmailAndPassword() async {
+    try {
+      final String email = _emailController.text.trim();
+      final String password = _passwordController.text.trim();
+
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      if (userCredential.user != null) {
+        // Authentication successful, navigate to the admin panel or another screen.
+        Navigator.pushNamed(context, '/Notesscreen');
+      } else {
+        // Handle authentication failure
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Authentication Failed'),
+              content: Text('Invalid email or password.'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } catch (e) {
+      // Handle other errors
+      print('Error during login: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +84,7 @@ class _LoginAdminState extends State<LoginAdmin> {
                       height: 4,
                     ),
                     TextFormField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
@@ -63,6 +108,7 @@ class _LoginAdminState extends State<LoginAdmin> {
                       height: 4,
                     ),
                     TextFormField(
+                      controller: _passwordController,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
@@ -71,13 +117,14 @@ class _LoginAdminState extends State<LoginAdmin> {
                         ),
                         hintText: 'Masukan password anda...',
                       ),
+                      obscureText: true,
                     ),
                   ],
                 ),
                 const SizedBox(height: 12), // Add spacing
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, '/Notesscreen');
+                    _signInWithEmailAndPassword();
                   },
                   child: Container(
                     width: double.infinity,
