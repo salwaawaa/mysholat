@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MySholat',
       theme: ThemeData(fontFamily: 'Poppins'),
-      initialRoute: '/notesScreen',
+      initialRoute: '/splashScreen',
       routes: {
         '/splashScreen': (context) => const SplashScreen(),
         '/homeScreen': (context) => HomeScreen(),
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
         '/resetScreen': (context) => const ResetScreen(),
         '/newPassword': (context) => const Newpassword(),
         '/loginAdmin': (context) => const LoginAdmin(),
-        '/notesScreen': (context) => const notesscreen(),
+        '/notesScreen': (context) => const NotesScreen(),
         '/niatAdmin': (context) => const NiatAdmin(),
         '/tambahNiat': (context) => const TambahNiat(),
         '/bacaanAdmin': (context) => const BacaanAdmin(),

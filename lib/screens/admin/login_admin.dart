@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mysholat/screens/admin/notes_screen.dart';
 
 class LoginAdmin extends StatefulWidget {
   const LoginAdmin({Key? key}) : super(key: key);
@@ -18,27 +20,23 @@ class _LoginAdminState extends State<LoginAdmin> {
       final String email = _emailController.text.trim();
       final String password = _passwordController.text.trim();
 
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      if (email.isNotEmpty && password.isNotEmpty) {
+        await _auth.signInWithEmailAndPassword(
+            email: email, password: password);
 
-      if (userCredential.user != null) {
-        // Authentication successful, navigate to the admin panel or another screen.
-        onTap:
-        () {
-          print("apa");
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => LoginAdmin()));
-        };
-        // Handle authentication failure
-        // ignore: use_build_context_synchronously
+        // If login is successful, navigate to the next screen (e.g., NotesScreen).
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) =>
+              NotesScreen(), // Replace with your destination screen
+        ));
+      } else {
+        // Handle empty email or password error
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: const Text('Authentication Failed'),
-              content: const Text('Invalid email or password.'),
+              title: Text('Error'),
+              content: Text('Please enter both email and password.'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -52,8 +50,24 @@ class _LoginAdminState extends State<LoginAdmin> {
         );
       }
     } catch (e) {
-      // Handle other errors
-      print('Error during login: $e');
+      // Handle login failure
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Login failed. Please check your credentials.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 
@@ -79,7 +93,7 @@ class _LoginAdminState extends State<LoginAdmin> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Username",
+                      "Email",
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.white,

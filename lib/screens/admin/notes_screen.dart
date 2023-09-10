@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:mysholat/screens/admin/login_admin.dart';
 
 // ignore: camel_case_types
-class notesscreen extends StatefulWidget {
-  const notesscreen({super.key});
+class NotesScreen extends StatefulWidget {
+  const NotesScreen({super.key});
 
   @override
-  State<notesscreen> createState() => _notesscreenState();
+  State<NotesScreen> createState() => _NotesScreenState();
 }
 
 // ignore: camel_case_types
-class _notesscreenState extends State<notesscreen> {
+class _NotesScreenState extends State<NotesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

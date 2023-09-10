@@ -115,7 +115,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 25,
                 ),
                 InkWell(
-                 
+                  onTap: () {
+                    Navigator.pushNamed(context, '/niatScreen');
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(8),
                     width: MediaQuery.of(context).size.width,
