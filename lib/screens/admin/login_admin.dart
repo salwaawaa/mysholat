@@ -25,15 +25,20 @@ class _LoginAdminState extends State<LoginAdmin> {
 
       if (userCredential.user != null) {
         // Authentication successful, navigate to the admin panel or another screen.
-        Navigator.pushNamed(context, '/Notesscreen');
-      } else {
+        onTap:
+        () {
+          print("apa");
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => LoginAdmin()));
+        };
         // Handle authentication failure
+        // ignore: use_build_context_synchronously
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text('Authentication Failed'),
-              content: Text('Invalid email or password.'),
+              title: const Text('Authentication Failed'),
+              content: const Text('Invalid email or password.'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {

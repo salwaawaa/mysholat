@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 155,
               child: InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, '/loginScreen');
+                  Navigator.pushNamed(context, '/homeScreen');
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8), // Add proper padding here

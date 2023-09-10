@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysholat/screens/admin/login_admin.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -82,7 +83,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/loginadmin');
+                              print("apa");
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => LoginAdmin()));
                             },
                             child: Image.asset(
                               "assets/image/image1.png",
@@ -110,9 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 25,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/niatScreen');
-                  },
+                 
                   child: Container(
                     padding: const EdgeInsets.all(8),
                     width: MediaQuery.of(context).size.width,

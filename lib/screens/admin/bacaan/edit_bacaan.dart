@@ -1,30 +1,35 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class TambahData extends StatefulWidget {
-  const TambahData({super.key});
+class EditBacaan extends StatefulWidget {
+  final DocumentSnapshot<Map<String, dynamic>> document;
+
+  const EditBacaan({Key? key, required this.document}) : super(key: key);
 
   @override
-  State<TambahData> createState() => _TambahDataState();
+  _EditBacaanState createState() => _EditBacaanState();
 }
 
-class _TambahDataState extends State<TambahData> {
+class _EditBacaanState extends State<EditBacaan> {
   final TextEditingController _judulController = TextEditingController();
   final TextEditingController _teksArabController = TextEditingController();
   final TextEditingController _latinController = TextEditingController();
 
-  Future<void> _addDataToFirestore() async {
+  @override
+  void initState() {
+    super.initState();
+
+    // Populate the text fields with the existing data
+    final data = widget.document.data() as Map<String, dynamic>;
+    _judulController.text = data['title'];
+    _teksArabController.text = data['textArab'];
+    _latinController.text = data['latin'];
+  }
+
+  // Function to update data in Firestore
+  Future<void> _updateDataInFirestore() async {
     try {
-      // Get the current maximum 'index' value from Firestore
-      final maxIndex = await _getMaxIndex();
-
-      // Increment the maximum index value by 1
-      final newIndex = maxIndex + 1;
-
-      // Add data to Firestore with the incremented 'index' value
-      await FirebaseFirestore.instance.collection('bacaanSholat').add({
-        'index': newIndex,
+      await widget.document.reference.update({
         'title': _judulController.text,
         'textArab': _teksArabController.text,
         'latin': _latinController.text,
@@ -32,43 +37,14 @@ class _TambahDataState extends State<TambahData> {
       });
     } catch (e) {
       // Handle any potential errors here
-      if (kDebugMode) {
-        print('Error adding data to Firestore: $e');
-      }
+      print('Error updating data in Firestore: $e');
     }
-  }
-
-  // Function to get the current maximum 'index' value from Firestore
-  Future<int> _getMaxIndex() async {
-    final querySnapshot = await FirebaseFirestore.instance
-        .collection('bacaanSholat')
-        .orderBy('index', descending: true)
-        .limit(1)
-        .get();
-
-    if (querySnapshot.docs.isNotEmpty) {
-      // Retrieve the maximum 'index' value
-      final maxIndex = querySnapshot.docs.first['index'] as int;
-      return maxIndex;
-    } else {
-      // If there are no documents, start with index 1
-      return 0;
-    }
-  }
-
-  @override
-  void dispose() {
-    // Dispose of the controllers when the widget is disposed
-    _judulController.dispose();
-    _teksArabController.dispose();
-    _latinController.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Set the background color to white
+      backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 70,
         backgroundColor: const Color(0xFF3E2B67),
@@ -76,7 +52,7 @@ class _TambahDataState extends State<TambahData> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "Tambah Data",
+              "Edit Niat",
               style: TextStyle(
                 fontSize: 18,
               ),
@@ -84,8 +60,8 @@ class _TambahDataState extends State<TambahData> {
             IconButton(
               icon: const Icon(Icons.check),
               onPressed: () {
-                // Perform action when the checkmark icon is pressed
-                _addDataToFirestore();
+                // Call the function to update data in Firestore
+                _updateDataInFirestore();
                 Navigator.pop(context);
               },
             ),
@@ -114,15 +90,13 @@ class _TambahDataState extends State<TambahData> {
                     borderSide: const BorderSide(
                       color: Color.fromARGB(255, 178, 115, 189),
                     ),
-                    borderRadius: BorderRadius.circular(
-                        10), // Mengatur border menjadi lingkaran
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
                       color: Color.fromARGB(255, 178, 115, 189),
                     ),
-                    borderRadius: BorderRadius.circular(
-                        10), // Mengatur border menjadi lingkaran
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),
@@ -139,21 +113,19 @@ class _TambahDataState extends State<TambahData> {
               TextField(
                 controller: _teksArabController,
                 decoration: InputDecoration(
-                  hintText: "Masukan teks arab",
+                  hintText: "Masukkan teks arab",
                   hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
                       color: Color.fromARGB(255, 178, 115, 189),
                     ),
-                    borderRadius: BorderRadius.circular(
-                        10), // Mengatur border menjadi lingkaran
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
                       color: Color.fromARGB(255, 178, 115, 189),
                     ),
-                    borderRadius: BorderRadius.circular(
-                        10), // Mengatur border menjadi lingkaran
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),
@@ -170,24 +142,22 @@ class _TambahDataState extends State<TambahData> {
               TextField(
                 controller: _latinController,
                 decoration: InputDecoration(
-                  hintText: "Masukan latin",
+                  hintText: "Masukkan latin",
                   hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
                       color: Color.fromARGB(255, 178, 115, 189),
                     ),
-                    borderRadius: BorderRadius.circular(
-                        10), // Mengatur border menjadi lingkaran
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
                       color: Color.fromARGB(255, 178, 115, 189),
                     ),
-                    borderRadius: BorderRadius.circular(
-                        10), // Mengatur border menjadi lingkaran
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -73,6 +73,7 @@ class _TambahNiatState extends State<TambahNiat> {
         toolbarHeight: 70,
         backgroundColor: const Color(0xFF3E2B67),
         title: Row(
+          
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(

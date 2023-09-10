@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mysholat/screens/admin/bacaan/edit_bacaan.dart';
 
 class BacaanAdmin extends StatefulWidget {
   const BacaanAdmin({super.key});
@@ -9,6 +10,8 @@ class BacaanAdmin extends StatefulWidget {
 }
 
 class _BacaanAdminState extends State<BacaanAdmin> {
+  get docs => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +64,7 @@ class _BacaanAdminState extends State<BacaanAdmin> {
               alignment: Alignment.bottomRight,
               child: InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, '/tambahdata');
+                  Navigator.pushNamed(context, '/tambahData');
                 },
                 child: Container(
                   width: 140,
@@ -85,11 +88,63 @@ class _BacaanAdminState extends State<BacaanAdmin> {
             ),
 
             const SizedBox(
-              height: 35,
+              height: 10,
             ),
-            Column(
-              children: [Container()],
+
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext dialogContext) {
+                        return AlertDialog(
+                          title: const Text('Konfirmasi'),
+                          content: const Text(
+                              'Apakah kamu yakin ingin menghapusnya?'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(dialogContext).pop();
+                              },
+                              child: const Text('Batal'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                // Delete the document and close the dialog
+                                _deleteDocument();
+                                Navigator.of(dialogContext).pop();
+                              },
+                              child: const Text('Hapus'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.edit,
+                    color: Colors.blue,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditBacaan(document: docs),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
+
+            // Add your delete logic here
 
             StreamBuilder(
                 stream: FirebaseFirestore.instance
@@ -321,3 +376,5 @@ class _BacaanAdminState extends State<BacaanAdmin> {
     );
   }
 }
+
+class _deleteDocument {}

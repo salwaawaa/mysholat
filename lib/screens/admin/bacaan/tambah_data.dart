@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class TambahData extends StatefulWidget {
-  const TambahData({super.key});
+class TambahBacaan extends StatefulWidget {
+  const TambahBacaan({super.key});
 
   @override
-  State<TambahData> createState() => _TambahDataState();
+  State<TambahBacaan> createState() => _TambahBacaanState();
 }
 
-class _TambahDataState extends State<TambahData> {
+class _TambahBacaanState extends State<TambahBacaan> {
   final TextEditingController _judulController = TextEditingController();
   final TextEditingController _teksArabController = TextEditingController();
   final TextEditingController _latinController = TextEditingController();
@@ -23,7 +23,7 @@ class _TambahDataState extends State<TambahData> {
       final newIndex = maxIndex + 1;
 
       // Add data to Firestore with the incremented 'index' value
-      await FirebaseFirestore.instance.collection('bacaanSholat').add({
+      await FirebaseFirestore.instance.collection('niatSholat').add({
         'index': newIndex,
         'title': _judulController.text,
         'textArab': _teksArabController.text,
@@ -41,7 +41,7 @@ class _TambahDataState extends State<TambahData> {
   // Function to get the current maximum 'index' value from Firestore
   Future<int> _getMaxIndex() async {
     final querySnapshot = await FirebaseFirestore.instance
-        .collection('bacaanSholat')
+        .collection('niatSholat')
         .orderBy('index', descending: true)
         .limit(1)
         .get();
@@ -76,7 +76,7 @@ class _TambahDataState extends State<TambahData> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "Tambah Data",
+              "Tambah Niat",
               style: TextStyle(
                 fontSize: 18,
               ),

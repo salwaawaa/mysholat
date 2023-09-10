@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mysholat/screens/admin/edit_data.dart';
+import 'package:mysholat/screens/admin/bacaan/edit_bacaan.dart';
+import 'package:mysholat/screens/admin/bacaan/tambah_data.dart';
 import 'package:mysholat/screens/admin/login_admin.dart';
 import 'package:mysholat/screens/admin/niat/edit_niat.dart';
 import 'package:mysholat/screens/admin/niat/niat_admin.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MySholat',
       theme: ThemeData(fontFamily: 'Poppins'),
-      initialRoute: '/homeScreen',
+      initialRoute: '/notesScreen',
       routes: {
         '/splashScreen': (context) => const SplashScreen(),
         '/homeScreen': (context) => HomeScreen(),
@@ -49,18 +50,16 @@ class MyApp extends StatelessWidget {
         '/daftarScreen': (context) => const DaftarScreen(),
         '/forgotScreen': (context) => const ForgotScreen(),
         '/resetScreen': (context) => const ResetScreen(),
-        '/newpassword': (context) => const Newpassword(),
-        '/loginadmin': (context) => const LoginAdmin(),
-        '/tambahdata': (context) => const TambahData(),
-        '/editdata': (context) => const EditData(),
-        '/Notesscreen': (context) => const notesscreen(),
+        '/newPassword': (context) => const Newpassword(),
+        '/loginAdmin': (context) => const LoginAdmin(),
+        '/notesScreen': (context) => const notesscreen(),
         '/niatAdmin': (context) => const NiatAdmin(),
         '/tambahNiat': (context) => const TambahNiat(),
-         '/bacaanAdmin': (context) => const BacaanAdmin(),
+        '/bacaanAdmin': (context) => const BacaanAdmin(),
+        '/tambahData': (context) => const TambahData(),
       },
     );
   }
 }
 
-mixin Updated {
-}
+mixin Updated {}

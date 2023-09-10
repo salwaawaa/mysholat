@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysholat/screens/admin/login_admin.dart';
 
 // ignore: camel_case_types
 class notesscreen extends StatefulWidget {
@@ -61,7 +62,11 @@ class _notesscreenState extends State<notesscreen> {
                         children: [
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/loginadmin');
+                              print("apa");
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => LoginAdmin()));
                             },
                             child: Image.asset(
                               "assets/image/image1.png",
