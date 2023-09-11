@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mysholat/screens/admin/bacaan/edit_bacaan.dart';
-import 'package:mysholat/screens/admin/bacaan/tambah_data.dart';
+import 'package:mysholat/screens/admin/bacaan/tambah_bacaan.dart';
 import 'package:mysholat/screens/admin/login_admin.dart';
 import 'package:mysholat/screens/admin/niat/edit_niat.dart';
 import 'package:mysholat/screens/admin/niat/niat_admin.dart';
@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
         '/tambahNiat': (context) => const TambahNiat(),
         '/bacaanAdmin': (context) => const BacaanAdmin(),
         '/tambahData': (context) => const TambahData(),
+        '/tambahBacaan': (context) => const TambahBacaan(),
       },
     );
   }

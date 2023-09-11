@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:image_picker/image_picker.dart';
 
 class TambahBacaan extends StatefulWidget {
   const TambahBacaan({super.key});
@@ -13,6 +18,7 @@ class _TambahBacaanState extends State<TambahBacaan> {
   final TextEditingController _judulController = TextEditingController();
   final TextEditingController _teksArabController = TextEditingController();
   final TextEditingController _latinController = TextEditingController();
+  final TextEditingController _translateController = TextEditingController();
 
   Future<void> _addDataToFirestore() async {
     try {
@@ -22,12 +28,27 @@ class _TambahBacaanState extends State<TambahBacaan> {
       // Increment the maximum index value by 1
       final newIndex = maxIndex + 1;
 
-      // Add data to Firestore with the incremented 'index' value
-      await FirebaseFirestore.instance.collection('niatSholat').add({
+      // Upload the image to Firebase Storage
+      final firebase_storage.Reference storageRef = firebase_storage
+          .FirebaseStorage.instance
+          .ref()
+          .child('images')
+          .child('bacaan_$newIndex.jpg');
+
+      final UploadTask uploadTask = storageRef.putFile(_selectedImage!);
+
+      // Wait for the upload to complete and get the download URL
+      final TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() {});
+      final imageUrl = await taskSnapshot.ref.getDownloadURL();
+
+      // Add data to Firestore with the incremented 'index' value and the image URL
+      await FirebaseFirestore.instance.collection('bacaanSholat').add({
         'index': newIndex,
         'title': _judulController.text,
         'textArab': _teksArabController.text,
         'latin': _latinController.text,
+        'image': imageUrl,
+        'translate': _translateController.text
         // Add other fields as needed
       });
     } catch (e) {
@@ -62,8 +83,11 @@ class _TambahBacaanState extends State<TambahBacaan> {
     _judulController.dispose();
     _teksArabController.dispose();
     _latinController.dispose();
+    _translateController.dispose();
     super.dispose();
   }
+
+  File? _selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +100,7 @@ class _TambahBacaanState extends State<TambahBacaan> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "Tambah Niat",
+              "Tambah Data",
               style: TextStyle(
                 fontSize: 18,
               ),
@@ -84,7 +108,6 @@ class _TambahBacaanState extends State<TambahBacaan> {
             IconButton(
               icon: const Icon(Icons.check),
               onPressed: () {
-                // Perform action when the checkmark icon is pressed
                 _addDataToFirestore();
                 Navigator.pop(context);
               },
@@ -98,6 +121,36 @@ class _TambahBacaanState extends State<TambahBacaan> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Text(
+                "Masukan Gambar",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+              ),
+              if (_selectedImage != null)
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: FileImage(_selectedImage!),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ElevatedButton(
+                onPressed: () async {
+                  final imagePicker = ImagePicker();
+                  final XFile? pickedImage = await imagePicker.pickImage(
+                    source: ImageSource
+                        .gallery, // You can also use ImageSource.camera
+                  );
+                  if (pickedImage != null) {
+                    setState(() {
+                      _selectedImage = File(pickedImage.path);
+                    });
+                  }
+                },
+                child: const Text('Pilih Gambar'),
+              ),
               const Text(
                 "Judul",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
@@ -171,6 +224,34 @@ class _TambahBacaanState extends State<TambahBacaan> {
                 controller: _latinController,
                 decoration: InputDecoration(
                   hintText: "Masukan latin",
+                  hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 178, 115, 189),
+                    ),
+                    borderRadius: BorderRadius.circular(
+                        10), // Mengatur border menjadi lingkaran
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 178, 115, 189),
+                    ),
+                    borderRadius: BorderRadius.circular(
+                        10), // Mengatur border menjadi lingkaran
+                  ),
+                ),
+              ),
+              const Text(
+                "Translate",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextField(
+                controller: _translateController,
+                decoration: InputDecoration(
+                  hintText: "Masukan translate",
                   hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
