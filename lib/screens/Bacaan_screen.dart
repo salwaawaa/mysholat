@@ -30,10 +30,12 @@ class _BacaanScreenState extends State<BacaanScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: 160,
+              height: 140,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,127 +62,32 @@ class _BacaanScreenState extends State<BacaanScreen> {
               height: 3,
             ),
             StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection("bacaanSholat")
-                    .orderBy("index", descending: false)
-                    .snapshots(),
-                builder: (_, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const CircularProgressIndicator();
-                  }
-                  List<QueryDocumentSnapshot<Map<String, dynamic>>> data =
-                      snapshot.data!.docs;
+              stream: FirebaseFirestore.instance
+                  .collection("bacaanSholat")
+                  .orderBy("index", descending: false)
+                  .snapshots(),
+              builder: (_, snapshot) {
+                if (!snapshot.hasData) {
+                  return const CircularProgressIndicator();
+                }
+                List<QueryDocumentSnapshot<Map<String, dynamic>>> data =
+                    snapshot.data!.docs;
 
-                  return SizedBox(
-                    height: 500,
-                    width: 1000,
-                    child: ListView.separated(
-                        itemCount: data.length,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        separatorBuilder: (context, index) => const SizedBox(
-                              width: 24,
-                            ),
-                        itemBuilder: (_, i) {
-                          return Container(
-                            width: 312,
-                            height: 700,
-                            color: Colors.white,
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.all(10),
-                                      width: 40, // Adjust this as needed
-                                      height: 40, // Adjust this as needed
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: const Color(0xFF3F2C67),
-                                        border: Border.all(
-                                            color: Colors.deepPurple,
-                                            width: 0.8),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "${i + 1}",
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                          ),
-                                          // Provide meaningful content here
-                                        ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      child: FittedBox(
-                                        child: Text(
-                                          data[i]["title"],
-                                          style: const TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 50,
-                                    )
-                                  ],
-                                ),
-                                Container(
-                                  height: 400,
-                                  padding: const EdgeInsets.all(5),
-                                  margin:
-                                      const EdgeInsets.only(left: 20, top: 20),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        Image.network(
-                                          data[i]["image"],
-                                          width: 180,
-                                          height: 180,
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Text(
-                                          data[i]["textArab"],
-                                          style: const TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(5),
-                                          child: Text(
-                                            data[i]["latin"],
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.normal,
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Text(
-                                          data[i]["translate"],
-                                          style: const TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.normal,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
-                  );
-                }),
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      data.length,
+                      (index) {
+                        DocumentSnapshot<Map<String, dynamic>> docs =
+                            data[index];
+                        return _listBacaan(context, docs);
+                      },
+                    ),
+                  ),
+                );
+              },
+            ),
             // Add more widgets here if needed
           ],
         ),
@@ -188,14 +95,13 @@ class _BacaanScreenState extends State<BacaanScreen> {
     );
   }
 
-  _listBacaan(
+  Widget _listBacaan(
       BuildContext context, DocumentSnapshot<Map<String, dynamic>> docs) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 450),
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
         child: Container(
-          padding: const EdgeInsets.all(16),
           width: 300,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -241,7 +147,7 @@ class _BacaanScreenState extends State<BacaanScreen> {
                 ],
               ),
               SizedBox(
-                height: 450,
+                height: 400, // Adjust this as needed
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
@@ -249,6 +155,11 @@ class _BacaanScreenState extends State<BacaanScreen> {
                       Image.network(
                         docs["image"],
                         scale: 4,
+                        errorBuilder: (BuildContext context, Object exception,
+                            StackTrace? stackTrace) {
+                          // Handle image loading error (e.g., display a placeholder image or show an error message)
+                          return const Placeholder(); // Replace with your error handling widget.
+                        },
                       ),
                       const SizedBox(height: 10),
                       Text(
@@ -281,7 +192,7 @@ class _BacaanScreenState extends State<BacaanScreen> {
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -25,7 +25,6 @@ class _DzikirScreenState extends State<DzikirScreen> {
                 context,
               );
             },
-            iconSize: 45,
           ),
         ),
       ),
@@ -76,16 +75,17 @@ class _DzikirScreenState extends State<DzikirScreen> {
               List<QueryDocumentSnapshot<Map<String, dynamic>>> data =
                   snapshot.data!.docs;
 
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Container(
-                          width: 180,
+              return Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2.3,
                           height: 140,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -118,11 +118,11 @@ class _DzikirScreenState extends State<DzikirScreen> {
                             ],
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Container(
-                          width: 180,
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2.3,
                           height: 140,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 236, 237, 236),
@@ -159,15 +159,16 @@ class _DzikirScreenState extends State<DzikirScreen> {
                             ],
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Row(
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          width: 180,
+                          width: MediaQuery.of(context).size.width / 2.3,
                           height: 140,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 236, 237, 236),
@@ -205,91 +206,94 @@ class _DzikirScreenState extends State<DzikirScreen> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(1),
-                          child: Container(
-                            width: 180,
-                            height: 140,
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 236, 237, 236),
-                              borderRadius: BorderRadius.circular(8.0),
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 1.0,
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2.3,
+                          height: 140,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 236, 237, 236),
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Tahlil",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                            child: const Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Tahlil",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                              Text(
+                                "لَا إِلَهَ إِلَّا اللَّهُ",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
                                 ),
-                                Text(
-                                  "لَا إِلَهَ إِلَّا اللَّهُ",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                  ),
+                              ),
+                              Text(
+                                "Tiada tuhan selain \nAllah",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
                                 ),
-                                Text(
-                                  "Tiada tuhan selain \nAllah",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  Container(
-                    width: 341,
-                    height: 99,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 236, 237, 236),
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 1.0,
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 236, 237, 236),
+                        borderRadius: BorderRadius.circular(8.0),
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 1.0,
+                        ),
+                      ),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Istighfar",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            "أَسْتَغْفِرُ الله",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            "Aku memohon ampun kepada Allah",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Istighfar",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        Text(
-                          "أَسْتَغْفِرُ الله",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Text(
-                          "Aku memohon ampun kepada Allah",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               );
             },
           ),
